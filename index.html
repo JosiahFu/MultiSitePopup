@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            let url_string = window.location.href;
+            let url = new URL(url_string);
+            let requestedUrlString = url.searchParams.get("urls");
+            let requestedUrls = requestedUrlString.split(',');
+            for (let i of requestedUrls) {
+                window.open(i);
+            }
+            window.close();
+        </script>
+    </body>
+</html>
