@@ -13,7 +13,11 @@
             function generate() {
                 let uri_string = document.getElementById("sites").value;
                 let uris = uri_string.split(/\r?\n/);
-                document.getElementById("output").value = "josiahfu.github.io/MultiSitePopup?urls="+encodeURIComponent(uris.join(","));
+                let encoded_uris = [];
+                for (let i : uris) {
+                    encoded_uris.push(encodeURIComponent(i));
+                }
+                document.getElementById("output").value = "josiahfu.github.io/MultiSitePopup?urls="+ uris.join(',');
             }
             
             let uri_string = window.location.href;
