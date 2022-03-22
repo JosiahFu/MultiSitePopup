@@ -14,15 +14,15 @@
                 let uri_string = document.getElementById("sites").value;
                 let uris = uri_string.split(/\r?\n/);
                 let encoded_uris = [];
-                for (let i : uris) {
+                for (let i of uris) {
                     encoded_uris.push(encodeURIComponent(i));
                 }
-                document.getElementById("output").value = "josiahfu.github.io/MultiSitePopup?urls="+ uris.join(',');
+                document.getElementById("output").value = "josiahfu.github.io/MultiSitePopup?urls="+ encoded_uris.join(',');
             }
             
             let uri_string = window.location.href;
             let uri = new URL(uri_string);
-            let requestedUrlString = uri.searchParams.get("uris");
+            let requestedUrlString = uri.searchParams.get("urls");
             if (requestedUrlString != "") {
                 let requestedUrls = requestedUrlString.split(',');
                 for (let i of requestedUrls) {
