@@ -4,15 +4,28 @@
 
     </head>
     <body>
+        <h1>Generate Multi-Site Popup URL</h1>
+        <p>Enter a list of URIs.</p>
+        <p><textarea id="sites"></textarea><br>
+        <button onclick="generate()">Generate URN</button><br>
+        <input id="output" readonly onclick="this.select()"><br>
         <script>
-            let url_string = window.location.href;
-            let url = new URL(url_string);
-            let requestedUrlString = url.searchParams.get("urls");
-            let requestedUrls = requestedUrlString.split(',');
-            for (let i of requestedUrls) {
-                window.open(i);
+            function generate() {
+                let uri_string = document.getElementById("sites").value;
+                let uris = uri_string.split(/\r?\n/);
+                document.getElementById("output").value = "josiahfu.github.io/MultiSitePopup?urls="+encodeURIComponent(uris.join(","));
             }
-            window.close();
+            
+            let uri_string = window.location.href;
+            let uri = new URL(uri_string);
+            let requestedUrlString = uri.searchParams.get("uris");
+            if (requestedUrlString != "") {
+                let requestedUrls = requestedUrlString.split(',');
+                for (let i of requestedUrls) {
+                    window.open(i);
+                }
+                window.close();
+            }
         </script>
     </body>
 </html>
